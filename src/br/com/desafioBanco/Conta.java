@@ -1,5 +1,7 @@
 package br.com.desafioBanco;
 
+import javax.sound.midi.Soundbank;
+
 public abstract class Conta implements InterfaceConta {
     private static int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
@@ -10,11 +12,18 @@ public abstract class Conta implements InterfaceConta {
     public Conta(){
         this.agencia = Conta.AGENCIA_PADRAO;
         this.conta = SEQUENCIAL++;
-    }
 
+}
     @Override
     public void sacar(double valor) {
-        saldo -= valor;
+        if (valor<saldo){
+            saldo -= valor;
+
+            System.out.println("Saque realizado!");
+        }else {
+
+            System.out.println("saldo insuficiente!");
+        }
     }
 
     @Override
